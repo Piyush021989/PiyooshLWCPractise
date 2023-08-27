@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Sub Component">
+        <lightning-layout>
+            <lightning-layout-item size="12">
+                <template if:true={detailPresent}>
+                    <div> Response received from Event Called from pubComponent --- {responseReceived}</div>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

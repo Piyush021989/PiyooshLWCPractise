@@ -1,0 +1,8 @@
+<template>
+  <lightning-card title="Public Method Call between Parent and Child">
+       <lightning-input value={getvalue} label="Checkbox Value" onchange={onInputChangeHandler}></lightning-input>
+        <lightning-button label="Select Checkbox" onclick={handleSelectedMarkeup}></lightning-button>
+        <div> I am a DIV in Parent Component</div>
+        <c-public-method-child ></c-public-method-child>
+  </lightning-card>
+</template>

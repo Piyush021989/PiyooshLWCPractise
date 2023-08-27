@@ -1,0 +1,26 @@
+<template>
+    <!-- <template for:each={contactList.data} for:item="contact">
+        <lightning-card key={contact.Id} icon-name="standard:contact">
+            <p> {contact.Name}  </p>
+        </lightning-card>
+    </template>  -->
+
+    <template for:each={conList} for:item="contact">
+        <lightning-card key={contact.LastName} icon-name="standard:contact">
+            <p> {contact.Name} </p>
+        </lightning-card>
+    </template>
+
+    <lightning-card title="Call Apex Method with Imperative call On Button Click">
+        <lightning-button label="Get Contact" onclick={getContactList} variant="brand"></lightning-button>
+        <lightning-layout>
+            <lightning-layout-item>
+                <template for:each={conListImpCall} for:item="contact">
+                    <lightning-card key={contact.LastName} icon-name="standard:contact">
+                        <p> {contact.Name} </p>
+                    </lightning-card>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

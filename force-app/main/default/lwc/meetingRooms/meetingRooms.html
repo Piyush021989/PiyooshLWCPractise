@@ -1,0 +1,19 @@
+<template>
+	<lightning-card variant="Narrow" title="Meeting Rooms" icon-name="standard:household">
+		<ul>
+			<template for:each={meetingRoomInfo} for:item="room">
+				<li key={room.roomName} style="padding:10px">
+					<c-meeting-room show-room-info>
+						<!--show-room-info  is considered as TRUE-->
+						<lightning-tile label={room.roomName} slot="meetingRoom">
+							<p class="slds-truncate" title={room.roomCapacity}>Room Capacity:
+								{room.roomCapacity}
+							</p>
+						</lightning-tile>
+                        <div> Addition NAMED Markup is coming in it</div>
+					</c-meeting-room>
+				</li>
+			</template>
+		</ul>
+	</lightning-card>
+</template>

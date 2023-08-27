@@ -1,0 +1,30 @@
+<template>
+	<lightning-card>
+		<lightning-input type="checkbox" label="Show Div" onchange={showDivTag}></lightning-input>
+		<template if:true={displayDiv}>
+			<div>I am Here</div>
+		</template>
+		<template if:false={displayDiv}>
+			<div>I am False</div>
+		</template>
+
+		<lightning-layout multiple-rows>
+			<lightning-layout-item size="12">
+				<template for:each={cityList} for:item="city">
+					<p key={city}>{city}</p>
+				</template>
+			</lightning-layout-item>
+
+			<lightning-layout-item size="12">
+				<div class="divcss">
+					<h1>Below is the example of the Iterator</h1>
+				</div>
+				
+				<template iterator:it={cityList}>
+					<p key={it.value}>{it.value}</p>
+				</template>
+			</lightning-layout-item>
+		</lightning-layout>
+	</lightning-card>
+
+</template>

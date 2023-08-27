@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title="To Do Manager">
+        <lightning-layout class="slds-align_absolute-center slds-text-align_center container" multiple-rows>
+            <lightning-layout-item size="12">
+                <div class="time"> {time} </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <div class="greeting">{greeting}</div>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12">
+                <div class="slds-text-heading_large slds-m-vertical_large">What is your main focus for Today ? </div>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" large-device-size="6" medium-device-size="10" small-device-size="12"
+                class="slds-m-top_large">
+                <lightning-layout>
+                    <lightning-layout-item size="11">
+                        <lightning-input type="text" label="What is in your mind" variant="label-hidden"
+                            placeholder="What is in your mind"></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="1">
+                        <lightning-button-icon icon-name="utility:add" title="Add Todo" onclick={addTodoHandler}>
+                        </lightning-button-icon>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <div>UPCOMING</div>
+                <template for:each={upcomingTask} for:item="todo">
+                    <!--"update" is the Custom Event defined in the Child component and to use this
+                    in the Parent component we need to use this with "on" keyword in this scenario it will be "onupdate"-->
+                    <c-to-do-item key={todo.todoId} todo-id={todo.todoId} todo-name={todo.todoName}
+                        onupdate={updateHandler} ondelete={deleteHandler}></c-to-do-item>
+                    <!-- <div class="item-class" key={todo.todoId}>
+                        <span class="slds-text-heading_label">{todo.todoName}</span>
+                        <lightning-button-icon class="slds-p-horizontal_medium" icon-name="utility:check"
+                            title="Complete the Task" onclick={completeTodoHandler}>
+                        </lightning-button-icon>
+                        <lightning-button-icon icon-name="utility:delete" title="Delete Task"
+                            onclick={deleteTodoHandler}>
+                        </lightning-button-icon>
+                    </div> -->
+                </template>
+
+                <div>Completed</div>
+                <template for:each={completedTask} for:item="todo">
+                    <!--"delete" is the Custom Event defined in the Child component and to use this
+                    in the Parent component we need to use this with "on" keyword in this scenario it will be "ondelete"-->
+                    <c-to-do-item key={todo.todoId} todo-id={todo.todoId} todo-name={todo.todoName} done
+                        onupdate={updateHandler} ondelete={deleteHandler}></c-to-do-item>
+                    <!-- <div class="item-class" key={todo.todoId}>
+                        <span class="slds-text-heading_label">{todo.todoName}</span>
+                        <lightning-button-icon class="slds-p-horizontal_medium" icon-name="utility:check"
+                            title="Complete the Task" onclick={completeTodoHandler}>
+                        </lightning-button-icon>
+                        <lightning-button-icon icon-name="utility:delete" title="Delete Task"
+                            onclick={deleteTodoHandler}>
+                        </lightning-button-icon>
+                    </div>-->
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
